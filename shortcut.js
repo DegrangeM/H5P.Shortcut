@@ -81,6 +81,9 @@ H5P.Shortcut = (function ($) {
           $container.find('.startbutton').addClass('hidden');
           $container.find('.shortcut').removeClass('hidden');
           C.success();
+        } else {
+          // Reset pressed keys
+          $container.find('.shortcut .key').removeClass('pressed');
         }
       }
     });
