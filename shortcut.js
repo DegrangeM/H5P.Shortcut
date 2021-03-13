@@ -33,7 +33,7 @@ H5P.Shortcut = (function ($) {
 
     // Split shortcut key, case where the key + is part of the shortuct (Ctrl++ or Ctrl+++a) need to be handled
     // Split work with regex, if there are matching parenthesis, they are included,
-    // however it will need to be clean from undefined and empty string that might appear
+    // however it will need to be cleaned from undefined and empty string that might appear
 
     const KEYS = this.options.shortcut.keys.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(x => x !== undefined && x != '');
     const KEYSTEXT = this.options.shortcut.keysText.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(x => x !== undefined && x != '');
