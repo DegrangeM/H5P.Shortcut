@@ -120,9 +120,9 @@ H5P.Shortcut = (function ($) {
     });
 
     /**
-   * Function to trigger when the shortcut is fully pressed
-   * Set score, display progress bar and other stuff
-   **/
+     * Function to trigger when the shortcut is fully pressed
+     * Set score, display progress bar and other stuff
+     **/
     C.success = function () {
 
       // send XAPI score
