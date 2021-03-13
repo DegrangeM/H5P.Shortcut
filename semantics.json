@@ -1,0 +1,119 @@
+[
+  {
+    "name": "shortcut",
+    "type": "group",
+    "label": "Shortcut",
+    "widget": "shortcutSelector",
+    "description": "Choose the shortcut the user will need to press. You can then use the second field to rename displayed text instead of using technical key name. Some shortcut like Alt+Tab can't be detected because the windows lose focus, however we can register this blur event (lose of focus) to try to detect the shortcut, just put the real key name in the second field.",
+    "fields": [
+      {
+        "name": "keys",
+        "type": "text"
+      },
+      {
+        "name": "keysText",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "name": "shortcutMode",
+    "type": "select",
+    "label": "Mode",
+    "description": "Key mapping depends on the keyboard type. For exemple, the first letter is a Q on qwerty keyboard but is an A on AZERTY keyboard. Shortcut can either be based on key content (Q key) or on key position (first letter). Usually you will want to use key content.",
+    "options": [
+      {
+        "value": "content",
+        "label": "Use content"
+      },
+      {
+        "value": "position",
+        "label": "Use position"
+      }
+    ],
+    "default": "content"
+  },
+  {
+    "name": "preventTrigger",
+    "type": "select",
+    "label": "Prevent key press to trigger event",
+    "description": "Key press might trigger event. It's possible to disable all event, the event of the full shurtcut (for exemple, selecting all text for Ctrl+A), all event exept the full shortcut or to disable nothing. This might not work for some shortcut such as Ctrl+W or Alt+F4.",
+    "options": [
+      {
+        "value": "all",
+        "label": "Prevent all key from the shortcut to trigger event"
+      },
+      {
+        "value": "shortcutOnly",
+        "label": "Prevent only the shortcut to trigger event, but not individual key from the shortcut"
+      },
+      {
+        "value": "allButShortcut",
+        "label": "Prevent all individual key press from the shortcut to trigger event but allow the full shortcut to trigger it's effect"
+      },
+      {
+        "value": "nothing",
+        "label": "Allow all key press to trigger event."
+      }
+    ],
+    "default": "all"
+  },
+  {
+    "name": "successText",
+    "type": "text",
+    "optional": true,
+    "widget": "html",
+    "label": "Text to show on success",
+    "description": "Optional text to display below the activity on success.",
+    "tags": [
+      "strong",
+      "em",
+      "sub"
+    ],
+    "font": {
+      "size": true,
+      "family": true,
+      "color": true,
+      "background": true
+    }
+  },
+  {
+    "name": "showStartButton",
+    "type": "boolean",
+    "default": true,
+    "label": "Show start button",
+    "description": "Require the user to press a start button before typing the shortcut. This must be checked if the h5p activity is loaded in an iframe for technical reason."
+  },
+  {
+    "name": "pressButtonToStart",
+    "type": "text",
+    "label": "Press the button to start the activity",
+    "importance": "low",
+    "default": "Press the button to start the activity",
+    "common": true
+  },
+  {
+    "name": "startButton",
+    "type": "text",
+    "label": "Start",
+    "importance": "low",
+    "default": "Start",
+    "common": true
+  },
+  {
+    "name": "pressKeys",
+    "type": "text",
+    "label": "Press the following keys on your keyboards",
+    "importance": "low",
+    "default": "Press the following keys on your keyboards",
+    "common": true
+  },
+  {
+    "name": "continueButton",
+    "type": "text",
+    "label": "Continue",
+    "importance": "low",
+    "default": "Continue",
+    "common": true
+  }
+]

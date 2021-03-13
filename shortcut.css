@@ -1,0 +1,47 @@
+.h5p-shortcut .hidden {
+  display: none;
+}
+
+.h5p-shortcut .successText.hidden {
+  visibility: hidden;
+  display: block;
+}
+
+.h5p-shortcut  {
+  padding-bottom: 20px;
+}
+
+/*.h5p-shortcut .startbutton.hidden {
+  display:none;
+}*/
+
+.h5p-shortcut .startbutton {
+  width: 100%;
+  text-align: center;
+  height: 100%;
+}
+
+.h5p-shortcut .shortcut {
+  text-align: center;
+  height: 100px;
+}
+/*.h5p-shortcut .shortcut.hidden {
+  display: none;
+}*/
+
+.h5p-shortcut .results {
+  min-height:50px;
+  text-align: center;
+}
+
+.h5p-shortcut .key {
+  background-color: #FAFAFA; /* AAEEAA */
+  border: 1px solid gray;
+  padding: 10px 10px 14px 10px;
+  border-radius: 5px;
+  box-shadow: inset 0px -4px 0px 0px grey;
+}
+
+.h5p-shortcut .key.pressed {
+  background-color: #AAEEAA;
+}

@@ -1,0 +1,35 @@
+{
+    "title": "Shortcut",
+    "description": "Request user to press a combinaison of keys",
+    "majorVersion": 1,
+    "minorVersion": 0,
+    "patchVersion": 0,
+    "runnable": 1,
+    "author": "Degrange Mathieu",
+    "license": "MIT",
+    "machineName": "H5P.Shortcut",
+    "preloadedJs": [
+        {
+            "path": "shortcut.js"
+        }
+    ],
+    "preloadedCss": [
+        {
+            "path": "shortcut.css"
+        }
+    ],
+    "preloadedDependencies": [
+        {
+            "machineName": "H5P.JoubelUI",
+            "majorVersion": 1,
+            "minorVersion": 3
+        }
+    ],
+    "editorDependencies": [
+        {
+            "machineName": "H5PEditor.ShortcutSelector",
+            "majorVersion": 1,
+            "minorVersion": 0
+        }
+    ]
+}
