@@ -38,9 +38,9 @@ H5P.Shortcut = (function ($) {
     const KEYS = this.options.shortcut.keys.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(x => x !== undefined && x != '');
     const KEYSTEXT = this.options.shortcut.keysText.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(x => x !== undefined && x != '');
 
-    // Set class on container to identify it as a greeting card
-    // container.  Allows for styling later.
     $container.addClass("h5p-shortcut");
+
+    // create HTML to display keys
 
     let keyHtml = KEYSTEXT.map(function (key) {
       return '<span class="key">' + key.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</span>';
@@ -51,6 +51,8 @@ H5P.Shortcut = (function ($) {
     $container.append('<div class="results"></div>');
     $container.append($('<div class="successText hidden">').html(this.options.successText));
 
+    // If h5p is within an iframe, the iframe need focus to detect key press.
+    // We force the user to click on a button each time the iframe is not focused
     if (this.options.showStartButton) {
       $container.find('.startbutton').removeClass('hidden');
       $container.find('.startbutton>button').click(function () {
@@ -59,16 +61,19 @@ H5P.Shortcut = (function ($) {
         $container.find('.shortcut').removeClass('hidden');
       });
 
-      window.addEventListener('blur', e => {
+      window.addEventListener('blur', () => {
         if (!success) {
           $container.find('.shortcut').addClass('hidden');
           $container.find('.startbutton').removeClass('hidden');
         }
       });
-    } else {
+    }
+    else {
       $container.find('.shortcut').removeClass('hidden');
     }
-    window.addEventListener('blur', e => {
+
+    // Some shortcut like Alt + Tab can't be detected as they focus out the windows, we can however detect this blur to try to detect the shortcut
+    window.addEventListener('blur', () => {
       if (!success) {
         // Check if last key is a blur
         if (KEYS[KEYS.length - 1] === 'blur' && $container.find('.shortcut .key.pressed').length == KEYS.length - 1) {
@@ -80,22 +85,27 @@ H5P.Shortcut = (function ($) {
       }
     });
 
+    // Detect key press to display pressed key of the shortcut and detect if the shortcut have been fully pressed
     document.addEventListener('keydown', e => {
       let key = this.options.shortcutMode == 'content' ? e.key : e.code;
       let keyIndex = KEYS.indexOf(key);
       if (keyIndex !== -1) {
+        // The key pressed was part of the shortcut
         $container.find('.shortcut .key').eq(keyIndex).addClass('pressed');
         if ($container.find('.shortcut .key').length == $container.find('.shortcut .key.pressed').length) {
+          // We pressed all the keys of the shortcut
           (this.options.preventTrigger === "all" || this.options.preventTrigger === "shortcutOnly") && e.preventDefault();
           if (!success) {
             C.success();
           }
-        } else {
+        }
+        else {
           (this.options.preventTrigger === "all" || this.options.preventTrigger === "allButShortcut") && e.preventDefault();
         }
       }
     });
 
+    // Remove green background of key of the shortcut when we unpress them unless the full shortcut have been pressed
     document.addEventListener('keyup', e => {
       if (!success) {
         let key = this.options.shortcutMode == 'content' ? e.key : e.code;
@@ -106,15 +116,27 @@ H5P.Shortcut = (function ($) {
       }
     });
 
+    /**
+   * Function to trigger when the shortcut is fully pressed
+   * Set score, display progress bar and other stuff
+   **/
     C.success = function () {
+
+      // send XAPI score
       self.triggerXAPIScored(1, 1, 'answered');
-      scoreBar = H5P.JoubelUI.createScoreBar(1);
+
+      // Show prrogress bar
+      let scoreBar = H5P.JoubelUI.createScoreBar(1);
       scoreBar.setScore(1);
       scoreBar.appendTo($container.find('.results'));
+
+      // display success Text
       $container.find('.successText').removeClass('hidden');
-      self.$.trigger('resize'); // not working !
+
+      self.$.trigger('resize'); // not working ?
       success = true;
-    }
+
+    };
 
     this.triggerXAPI('attempted');
 
