@@ -97,13 +97,13 @@ H5P.Shortcut = (function ($) {
         $container.find('.shortcut .key').eq(keyIndex).addClass('pressed');
         if ($container.find('.shortcut .key').length == $container.find('.shortcut .key.pressed').length) {
           // We pressed all the keys of the shortcut
-          (this.options.preventTrigger === "all" || this.options.preventTrigger === "shortcutOnly") && e.preventDefault();
+          (this.options.preventTrigger === "all" || this.options.preventTrigger === 'shortcutOnly') && e.preventDefault();
           if (!success) {
             C.success();
           }
         }
         else {
-          (this.options.preventTrigger === "all" || this.options.preventTrigger === "allButShortcut") && e.preventDefault();
+          (this.options.preventTrigger === "all" || this.options.preventTrigger === 'allButShortcut') && e.preventDefault();
         }
       }
     });
