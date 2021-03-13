@@ -128,7 +128,7 @@ H5P.Shortcut = (function ($) {
       // send XAPI score
       self.triggerXAPIScored(1, 1, 'answered');
 
-      // Show prrogress bar
+      // Show progress bar
       let scoreBar = H5P.JoubelUI.createScoreBar(1);
       scoreBar.setScore(1);
       scoreBar.appendTo($container.find('.results'));
