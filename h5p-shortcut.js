@@ -18,7 +18,7 @@ H5P.Shortcut = (function ($) {
     }, options);
     // Keep provided id.
     this.id = id;
-  };
+  }
 
   /**
    * Attach function called by H5P framework to insert H5P content into
