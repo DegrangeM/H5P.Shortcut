@@ -35,8 +35,12 @@ H5P.Shortcut = (function ($) {
     // Split work with regex, if there are matching parenthesis, they are included,
     // however it will need to be cleaned from undefined and empty string that might appear
 
-    const KEYS = this.options.shortcut.keys.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(x => x !== undefined && x !== '');
-    const KEYSTEXT = this.options.shortcut.keysText.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(x => x !== undefined && x !== '');
+    const KEYS = this.options.shortcut.keys.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(function (x) {
+      return x !== undefined && x !== '';
+    });
+    const KEYSTEXT = this.options.shortcut.keysText.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(function (x) {
+      return x !== undefined && x !== '';
+    });
 
     $container.addClass('h5p-shortcut');
 
@@ -61,7 +65,7 @@ H5P.Shortcut = (function ($) {
         $container.find('.shortcut').removeClass('hidden');
       });
 
-      window.addEventListener('blur', () => {
+      window.addEventListener('blur', function () {
         if (!success) {
           $container.find('.shortcut').addClass('hidden');
           $container.find('.startbutton').removeClass('hidden');
