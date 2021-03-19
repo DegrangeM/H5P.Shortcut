@@ -3,19 +3,19 @@
   "description": "Request user to press a combinaison of keys",
   "majorVersion": 1,
   "minorVersion": 0,
-  "patchVersion": 0,
+  "patchVersion": 1,
   "runnable": 1,
   "author": "Degrange Mathieu",
   "license": "MIT",
   "machineName": "H5P.Shortcut",
   "preloadedJs": [
     {
-      "path": "shortcut.js"
+      "path": "h5p-shortcut.js"
     }
   ],
   "preloadedCss": [
     {
-      "path": "shortcut.css"
+      "path": "h5p-shortcut.css"
     }
   ],
   "preloadedDependencies": [
