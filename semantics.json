@@ -20,7 +20,7 @@
     "name": "shortcutMode",
     "type": "select",
     "label": "Mode",
-    "description": "Key mapping depends on the keyboard type. For exemple, the first letter is a Q on qwerty keyboard but is an A on AZERTY keyboard. Shortcut can either be based on key content (Q key) or on key position (first letter). Usually you will want to use key content.",
+    "description": "Key mapping depends on the keyboard type. For example, the first letter is a Q on qwerty keyboard but is an A on AZERTY keyboard. Shortcut can either be based on key content (Q key) or on key position (first letter). Usually you will want to use key content.",
     "options": [
       {
         "value": "content",
@@ -37,7 +37,7 @@
     "name": "preventTrigger",
     "type": "select",
     "label": "Prevent key press to trigger event",
-    "description": "Key press might trigger event. It's possible to disable all event, the event of the full shurtcut (for exemple, selecting all text for Ctrl+A), all event exept the full shortcut or to disable nothing. This might not work for some shortcut such as Ctrl+W or Alt+F4.",
+    "description": "Key press might trigger event. It's possible to disable all event, the event of the full shurtcut (for example, selecting all text for Ctrl+A), all event exept the full shortcut or to disable nothing. This might not work for some shortcut such as Ctrl+W or Alt+F4.",
     "options": [
       {
         "value": "all",
