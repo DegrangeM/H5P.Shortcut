@@ -35,8 +35,8 @@ H5P.Shortcut = (function ($) {
     // Split work with regex, if there are matching parenthesis, they are included,
     // however it will need to be cleaned from undefined and empty string that might appear
 
-    const KEYS = this.options.shortcut.keys.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(x => x !== undefined && x != '');
-    const KEYSTEXT = this.options.shortcut.keysText.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(x => x !== undefined && x != '');
+    const KEYS = this.options.shortcut.keys.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(x => x !== undefined && x !== '');
+    const KEYSTEXT = this.options.shortcut.keysText.split(/(?:(?:^|\+)(\+)(?:\+|$))|\+/).filter(x => x !== undefined && x !== '');
 
     $container.addClass("h5p-shortcut");
 
@@ -76,7 +76,7 @@ H5P.Shortcut = (function ($) {
     window.addEventListener('blur', () => {
       if (!success) {
         // Check if last key is a blur
-        if (KEYS[KEYS.length - 1] === 'blur' && $container.find('.shortcut .key.pressed').length == KEYS.length - 1) {
+        if (KEYS[KEYS.length - 1] === 'blur' && $container.find('.shortcut .key.pressed').length === KEYS.length - 1) {
           $container.find('.shortcut .key').last().addClass('pressed');
           $container.find('.startbutton').addClass('hidden');
           $container.find('.shortcut').removeClass('hidden');
@@ -90,12 +90,12 @@ H5P.Shortcut = (function ($) {
 
     // Detect key press to display pressed key of the shortcut and detect if the shortcut have been fully pressed
     document.addEventListener('keydown', e => {
-      let key = this.options.shortcutMode == 'content' ? e.key : e.code;
+      let key = this.options.shortcutMode === 'content' ? e.key : e.code;
       let keyIndex = KEYS.indexOf(key);
       if (keyIndex !== -1) {
         // The key pressed was part of the shortcut
         $container.find('.shortcut .key').eq(keyIndex).addClass('pressed');
-        if ($container.find('.shortcut .key').length == $container.find('.shortcut .key.pressed').length) {
+        if ($container.find('.shortcut .key').length === $container.find('.shortcut .key.pressed').length) {
           // We pressed all the keys of the shortcut
           (this.options.preventTrigger === "all" || this.options.preventTrigger === 'shortcutOnly') && e.preventDefault();
           if (!success) {
@@ -111,7 +111,7 @@ H5P.Shortcut = (function ($) {
     // Remove green background of key of the shortcut when we unpress them unless the full shortcut have been pressed
     document.addEventListener('keyup', e => {
       if (!success) {
-        let key = this.options.shortcutMode == 'content' ? e.key : e.code;
+        let key = this.options.shortcutMode === 'content' ? e.key : e.code;
         let keyIndex = KEYS.indexOf(key);
         if (keyIndex !== -1) {
           $container.find('.shortcut .key').eq(keyIndex).removeClass('pressed');
