@@ -27,7 +27,7 @@ H5P.Shortcut = (function ($) {
    * @param {jQuery} $container
    */
   C.prototype.attach = function ($container) {
-    var self = this;
+    const self = this;
 
     let success = false;
 
@@ -42,7 +42,7 @@ H5P.Shortcut = (function ($) {
 
     // create HTML to display keys
 
-    let keyHtml = KEYSTEXT.map(function (key) {
+    const keyHtml = KEYSTEXT.map(function (key) {
       return '<span class="key">' + key.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</span>';
     }).join(' + ');
 
@@ -91,8 +91,8 @@ H5P.Shortcut = (function ($) {
 
     // Detect key press to display pressed key of the shortcut and detect if the shortcut have been fully pressed
     document.addEventListener('keydown', e => {
-      let key = this.options.shortcutMode === 'content' ? e.key : e.code;
-      let keyIndex = KEYS.indexOf(key);
+      const key = this.options.shortcutMode === 'content' ? e.key : e.code;
+      const keyIndex = KEYS.indexOf(key);
       if (keyIndex !== -1) {
         // The key pressed was part of the shortcut
         $container.find('.shortcut .key').eq(keyIndex).addClass('pressed');
@@ -112,8 +112,8 @@ H5P.Shortcut = (function ($) {
     // Remove green background of key of the shortcut when we unpress them unless the full shortcut have been pressed
     document.addEventListener('keyup', e => {
       if (!success) {
-        let key = this.options.shortcutMode === 'content' ? e.key : e.code;
-        let keyIndex = KEYS.indexOf(key);
+        const key = this.options.shortcutMode === 'content' ? e.key : e.code;
+        const keyIndex = KEYS.indexOf(key);
         if (keyIndex !== -1) {
           $container.find('.shortcut .key').eq(keyIndex).removeClass('pressed');
         }
@@ -130,7 +130,7 @@ H5P.Shortcut = (function ($) {
       self.triggerXAPIScored(1, 1, 'answered');
 
       // Show progress bar
-      let scoreBar = H5P.JoubelUI.createScoreBar(1);
+      const scoreBar = H5P.JoubelUI.createScoreBar(1);
       scoreBar.setScore(1);
       scoreBar.appendTo($container.find('.results'));
 
