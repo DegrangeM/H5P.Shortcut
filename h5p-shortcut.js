@@ -73,7 +73,7 @@ H5P.Shortcut = (function ($) {
     }
 
     // Some shortcut like Alt + Tab can't be detected as they focus out the windows, we can however detect this blur to try to detect the shortcut
-    window.addEventListener('blur', () => {
+    window.addEventListener('blur', function () {
       if (!success) {
         // Check if last key is a blur
         if (KEYS[KEYS.length - 1] === 'blur' && $container.find('.shortcut .key.pressed').length === KEYS.length - 1) {
@@ -90,29 +90,29 @@ H5P.Shortcut = (function ($) {
     });
 
     // Detect key press to display pressed key of the shortcut and detect if the shortcut have been fully pressed
-    document.addEventListener('keydown', e => {
-      const key = this.options.shortcutMode === 'content' ? e.key : e.code;
+    document.addEventListener('keydown', function (e) {
+      const key = self.options.shortcutMode === 'content' ? e.key : e.code;
       const keyIndex = KEYS.indexOf(key);
       if (keyIndex !== -1) {
         // The key pressed was part of the shortcut
         $container.find('.shortcut .key').eq(keyIndex).addClass('pressed');
         if ($container.find('.shortcut .key').length === $container.find('.shortcut .key.pressed').length) {
           // We pressed all the keys of the shortcut
-          (this.options.preventTrigger === 'all' || this.options.preventTrigger === 'shortcutOnly') && e.preventDefault();
+          (self.options.preventTrigger === 'all' || self.options.preventTrigger === 'shortcutOnly') && e.preventDefault();
           if (!success) {
             C.success();
           }
         }
         else {
-          (this.options.preventTrigger === 'all' || this.options.preventTrigger === 'allButShortcut') && e.preventDefault();
+          (self.options.preventTrigger === 'all' || self.options.preventTrigger === 'allButShortcut') && e.preventDefault();
         }
       }
     });
 
     // Remove green background of key of the shortcut when we unpress them unless the full shortcut have been pressed
-    document.addEventListener('keyup', e => {
+    document.addEventListener('keyup', function (e) {
       if (!success) {
-        const key = this.options.shortcutMode === 'content' ? e.key : e.code;
+        const key = self.options.shortcutMode === 'content' ? e.key : e.code;
         const keyIndex = KEYS.indexOf(key);
         if (keyIndex !== -1) {
           $container.find('.shortcut .key').eq(keyIndex).removeClass('pressed');
@@ -144,9 +144,7 @@ H5P.Shortcut = (function ($) {
 
     this.triggerXAPI('attempted');
 
-    setTimeout(function () {
-      self.$.trigger('resize');
-    }, 1000);
+    self.$.trigger('resize');
   };
 
   return C;
