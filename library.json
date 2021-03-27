@@ -5,6 +5,7 @@
   "minorVersion": 0,
   "patchVersion": 1,
   "runnable": 1,
+  "embedTypes": ["iframe"],
   "author": "Degrange Mathieu",
   "license": "MIT",
   "machineName": "H5P.Shortcut",
