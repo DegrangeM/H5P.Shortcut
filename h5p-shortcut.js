@@ -63,12 +63,14 @@ H5P.Shortcut = (function ($) {
         $container.find('.startbutton>button').text(self.options.continueButton);
         $container.find('.startbutton').addClass('hidden');
         $container.find('.shortcut').removeClass('hidden');
+        self.trigger('resize');
       });
 
       window.addEventListener('blur', function () {
         if (!success) {
           $container.find('.shortcut').addClass('hidden');
           $container.find('.startbutton').removeClass('hidden');
+          self.trigger('resize');
         }
       });
     }
