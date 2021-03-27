@@ -141,14 +141,14 @@ H5P.Shortcut = (function ($) {
       // display success Text
       $container.find('.successText').removeClass('hidden');
 
-      self.$.trigger('resize'); // not working ?
+      self.trigger('resize');
       success = true;
 
     };
 
     this.triggerXAPI('attempted');
 
-    self.$.trigger('resize');
+    self.trigger('resize');
   };
 
   return C;
